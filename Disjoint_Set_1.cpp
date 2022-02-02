@@ -64,5 +64,7 @@ int32_t main()
     fastIO1;
     fastIO2;
 
+    cout<<"Disjoint Set Concept !!"<<endl;
+
     return 0;
 }
