@@ -1,2 +1,2 @@
 # IMPORTANT ALGORITHMS
-Some famous and important algorithms in C++
+All important algorithms and some concepts in C++
