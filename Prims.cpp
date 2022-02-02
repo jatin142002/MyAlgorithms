@@ -104,7 +104,7 @@ int32_t main()
 //    Curr_node : 6 , Par_Node : 5 , Weight : 3
 
 /*
-https://leetcode.com/problems/min-cost-to-connect-all-points/  --> Disjoint Set is used for implementing Prims  
+https://leetcode.com/problems/min-cost-to-connect-all-points/  --> Disjoint Set is used for implementing KRUSKAL  
 
 map <pair<int,int>,int> m1;
 vector<pair<int,int>> adj[10001];
