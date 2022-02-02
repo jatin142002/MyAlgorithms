@@ -1,4 +1,4 @@
-// Template created by jatin mehra -----> PRIM'S ALGORITHM FOR MST
+// Template created by jatin mehra --> Prims Algorithm
 #include <bits/stdc++.h>
 using namespace std;
 #define mod 1000000007
@@ -102,3 +102,72 @@ int32_t main()
 //    Curr_node : 4 , Par_Node : 3 , Weight : 2
 //    Curr_node : 5 , Par_Node : 4 , Weight : 3
 //    Curr_node : 6 , Par_Node : 5 , Weight : 3
+
+/*
+https://leetcode.com/problems/min-cost-to-connect-all-points/  --> Disjoint Set is used for implementing Prims  
+
+map <pair<int,int>,int> m1;
+vector<pair<int,int>> adj[10001];
+vector<int>parent;
+
+int Parent(int node) 
+{
+    if(parent[node]!= node)
+    {
+        parent[node] = Parent(parent[node]);
+    }
+    return parent[node];
+}
+    
+int minCostConnectPoints(vector<vector<int>>& points) {
+    
+    vector<pair<int,pair<int,int>>>dp;
+   
+    for(int i=0 ; i<points.size() ; i++)
+    {
+        m1[{points[i][0],points[i][1]}] = i;
+    }
+    
+    for(int i=0 ; i<points.size() ; i++)
+    {
+          for(int j=i+1 ; j<points.size() ; j++)
+          {
+              
+              int dist = abs(points[i][0]-points[j][0]) + abs(points[i][1]-points[j][1]);
+              dp.push_back({dist,{m1[{points[i][0],points[i][1]}],m1[{points[j][0],points[j][1]}]}});
+          }
+    }
+    
+    sort(dp.begin(),dp.end());
+    int ans=0;
+                          
+    
+    
+    parent.resize(points.size());
+    
+    for(int i=0;i<points.size();i++)
+        parent[i] = i;
+    
+    
+    for(auto x: dp)
+    {
+        int n1 = Parent(x.second.first);
+        int n2 = Parent(x.second.second);
+        int v = x.first;
+        
+        
+        
+        if(n1 == n2)
+            continue;
+        
+        parent[n1] = n2;
+        ans+= v;
+        
+        
+    }
+       
+    
+    return ans;   
+}
+
+*/
