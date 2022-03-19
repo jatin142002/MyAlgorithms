@@ -1,0 +1,58 @@
+https://leetcode.com/problems/as-far-from-land-as-possible/submissions/
+
+class Solution {
+public:
+    int dx[4] = {1,-1,0,0};
+    int dy[4] = {0,0,1,-1};
+    
+    int maxDistance(vector<vector<int>>& grid) {
+        queue<pair<int,int>> q1;
+        
+        for(int i=0 ; i<grid.size() ; i++)
+        {
+            for(int j=0 ; j<grid[0].size() ; j++)
+            {
+                if(grid[i][j]==1)
+                {
+                    q1.push({i,j});
+                }
+            }
+        }
+        
+        if(q1.size()==0 || q1.size()==grid.size()*grid[0].size())
+        {
+            return -1;
+        }
+        
+        int level = -1;
+        
+        while(!q1.empty())
+        {
+            level++ ;
+            int size = q1.size();
+            
+            while(size--)
+            {
+                pair<int,int> temp = q1.front();
+                q1.pop();
+                
+                for(int i=0 ; i<4 ; i++)
+                {
+                    int a = temp.first + dx[i];
+                    int b = temp.second + dy[i];
+                    
+                    if(a<0 || b<0 || a>=grid.size() || b>=grid[0].size() || grid[a][b]==1)
+                    {
+                        continue;
+                    }
+                    
+                    q1.push({a,b});
+                    grid[a][b] = 1;
+                    
+                }
+            }
+        }
+        
+        return level ; 
+    }
+};
